@@ -1,0 +1,22 @@
+Password-Based Key Derivation Function 2 or PBKDF2:
+- it is a cryptographic algorithm that takes a password and turns it into a secure key for encryption or authentication
+- It slows down brute-force attacks by repeatedly hashing the password with a salt.
+
+
+Core Idea
+Takes in 4 Main Inputs:
+    Password: User's plain password
+    Salt: Random String added to make each derived key unique
+    Iterations: Number of time the function is applied to make the cracking(harder to decrpyt) harder
+    Desired Key Length: How long the key should be in bytes
+
+
+Process:
+    Step 1:
+        Combine password and salt
+    Step 2:
+        Hash them with a cryptographic hash function like SHA-256
+    Step 3:
+        Repeat the hashing thousands of times (for example, 100,000+ iterations)
+    Step 4:
+        Output the derived key, which can be used for AES encryption or stored for password verification
