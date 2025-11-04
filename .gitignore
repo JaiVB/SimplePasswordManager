@@ -1,0 +1,35 @@
+# --- Python build files ---
+__pycache__/
+*.py[cod]
+*.pyo
+*.pyd
+*.so
+*.egg-info/
+dist/
+build/
+
+# --- Virtual environments ---
+venv/
+.env/
+env/
+.venv/
+
+# --- IDE settings ---
+.vscode/
+.idea/
+*.swp
+
+# --- OS junk ---
+.DS_Store
+Thumbs.db
+
+# --- Logs ---
+*.log
+
+# --- Security / Vault ---
+vault.json
+vault.db
+*.vault
+*.enc
+*.key
+*.bak
