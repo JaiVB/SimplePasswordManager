@@ -22,35 +22,34 @@ from typing import Any, Dict
 
 VAULT_PATH = "vault.json"
 
-# TODO: Return True if the vault file exists
 # Checks if vault.json exists.
 def vault_exists() -> bool:
-    pass
+    return os.path.exists(VAULT_PATH)   
 
 
-# TODO: Load vault.json and return as dict
 # If missing, return default structure {"config": {}, "entries": {}}
 # Loads JSON into a Python dict.
 def load_vault() -> Dict[str, Any]:
-    pass
+    if not os.path.exists(VAULT_PATH):
+        return {"config": {}, "entries": {}}
+    with open(VAULT_PATH, "r", encoding="utf-8") as f:
+        return json.load(f)
 
 
-# TODO: Save the vault dict to vault.json
 # Saves updated dict to file.
 def save_vault(vault: Dict[str, Any]) -> None:
-    pass
+    with open(VAULT_PATH, "w", encoding="utf-8") as f:
+        json.dump(vault, f, indent=2)
 
 
-# TODO: Return or create "config" section inside vault
 # Returns or creates a "config" section.
 def get_config(vault: Dict[str, Any]) -> Dict[str, Any]:
-    pass
+    return vault.setdefault("config", {})
 
 
-# TODO: Return or create "entries" section inside vault
 # Returns or creates an "entries" section.
 def get_entries(vault: Dict[str, Any]) -> Dict[str, Any]:
-    pass
+    return vault.setdefault("entries", {})
 
 
 
