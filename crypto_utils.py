@@ -64,20 +64,39 @@ def derive_key(master_password: str, salt: bytes, iterations: int = 200000) -> b
 # Uses AES-GCM to encrypt text.
 # Returns Base64 nonce and ciphertext.
 def encrypt_text(key: bytes, plaintext: str) -> tuple[str, str]:
-    pass
+    # Create AES-GCM cipher object
+    aesgcm = AESGCM(key)
+    # Generate a random 12-byte nonce
+    # 12 bytes is standard for AES-GCM
+    nonce = urandom(12) 
+    # Encrypt the plaintext
+    ciphertext = aesgcm.encrypt(nonce, plaintext.encode('utf-8'), None) 
+    return nonce, ciphertext
+    
 
 
 # TODO: Decrypt ciphertext with AES-GCM
 # Return the original plaintext string
 # Reverses encryption to get plaintext.
 def decrypt_text(key: bytes, nonce_b64: str, ciphertext_b64: str) -> str:
-    pass
+    # Create AES-GCM cipher object with the same key
+    aesgcm = AESGCM(key)
+
+    # Decode Base64 nonce and ciphertext back to bytes
+    nonce = b64decode(nonce_b64)
+    ciphertext = b64decode(ciphertext_b64)
+    # Decrypt the ciphertext
+    plaintext_bytes = aesgcm.decrypt(nonce, ciphertext, None)
+
+    plaintext_bytes = plaintext_bytes.decode('utf-8')
+    return plaintext_bytes
 
 
 # TODO: Generate a secure random salt (default 16 bytes)
 # Generates random salt using os.urandom().
 def generate_salt(length: int = 16) -> bytes:
-    pass
+    return urandom(length)
+    
 
 
 

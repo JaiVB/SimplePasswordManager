@@ -20,3 +20,17 @@ Process:
         Repeat the hashing thousands of times (for example, 100,000+ iterations)
     Step 4:
         Output the derived key, which can be used for AES encryption or stored for password verification
+
+
+AESGCM  (AES in Galois/Counter Mode)
+- Provides:
+    Confidentiality (data is encrypted)
+    integrity (data can't be modified unnoticed)
+- Part of the cryptography libary
+    from cryptography.hazmat.primitives.ciphers.aead import AESGCM
+
+
+Nonce (Number used once)
+- Random value that must be unique every time you encrpyt somethign with the same key
+- Usually 12 bytes long
+- Ensures you get different ciphertexts
