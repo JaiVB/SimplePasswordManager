@@ -26,7 +26,6 @@ VAULT_PATH = "vault.json"
 def vault_exists() -> bool:
     return os.path.exists(VAULT_PATH)   
 
-
 # If missing, return default structure {"config": {}, "entries": {}}
 # Loads JSON into a Python dict.
 def load_vault() -> Dict[str, Any]:
